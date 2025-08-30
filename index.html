@@ -6,43 +6,78 @@
   <style>
     body { font-family: Arial, sans-serif; background: #f8f9fa; margin: 0; padding: 0; }
     header { background: #273c75; color: #fff; padding: 20px; text-align: center; }
-    .telegram-promo {
+    .options-container {
+      display: flex;
+      justify-content: center;
+      margin: 40px 0 0 0;
+      gap: 30px;
+    }
+    .option-btn {
+      font-size: 20px;
+      padding: 16px 36px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background 0.2s, color 0.2s;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.10);
+    }
+    .join-btn {
       background: #0088cc;
       color: #fff;
-      margin: 20px auto;
-      padding: 20px 30px;
-      border-radius: 8px;
-      text-align: center;
-      max-width: 500px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.08);
     }
-    .telegram-promo a {
-      background: #fff;
-      color: #0088cc;
-      padding: 10px 20px;
-      border-radius: 4px;
-      text-decoration: none;
-      font-weight: bold;
-      margin-top: 10px;
-      display: inline-block;
-      transition: background 0.2s, color 0.2s;
-    }
-    .telegram-promo a:hover {
+    .join-btn:hover {
       background: #005580;
+    }
+    .joined-btn {
+      background: #44bd32;
       color: #fff;
     }
+    .joined-btn:hover {
+      background: #218c2c;
+    }
+    .player-container {
+      margin: 40px auto;
+      max-width: 800px;
+      text-align: center;
+      display: none;
+      /* Hidden by default */
+    }
+    video {
+      width: 100%;
+      max-width: 800px;
+      height: 450px;
+      background: #000;
+    }
   </style>
+  <script>
+    function showPlayer() {
+      document.getElementById('player').style.display = 'block';
+      window.scrollTo({ top: document.getElementById('player').offsetTop - 40, behavior: 'smooth' });
+    }
+  </script>
 </head>
 <body>
   <header>
     <h1>CricCast</h1>
     <p>Your home for live cricket streaming</p>
   </header>
-  <div class="telegram-promo">
-    <h2>Join our Telegram Channel!</h2>
-    <p>Get instant updates, match links, and more. Don’t miss out on live cricket action!</p>
-    <a href="https://t.me/the_cricket_corner" target="_blank">Join @the_cricket_corner</a>
+
+  <div class="options-container">
+    <a href="https://t.me/the_cricket_corner" target="_blank">
+      <button class="option-btn join-btn">Join Now</button>
+    </a>
+    <button class="option-btn joined-btn" onclick="showPlayer()">Already Joined</button>
   </div>
-  <!-- Your live stream player and other content goes here -->
+
+  <div id="player" class="player-container">
+    <h2>Watch Star Sports 1 Live</h2>
+    <video controls autoplay>
+      <!-- Replace the src below with your actual, authorized m3u8 video stream link -->
+      <source src="YOUR_LEGAL_M3U8_STREAM_LINK_HERE" type="application/x-mpegURL">
+      Your browser does not support the video tag.
+    </video>
+    <p>If the stream doesn't load, please check your connection or try again later.</p>
+  </div>
 </body>
 </html>
